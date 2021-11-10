@@ -1,0 +1,23 @@
+birthdays = {'Snoopy' : '02/11/1947', 'Donald' : '04/16/1957'}
+
+while True:
+
+    print ('Name the birhday you wish to recall.')
+
+    name = input()
+
+    if name in birthdays:
+
+        print(name + ' has a birthday on ' + birthdays[name])
+
+    else:
+
+        print('This name has not been entered into the database.')
+
+        print('What is their birthdate?')
+
+        birth = input()
+
+        print(name + ' Has a birthday of ' + birth + ', this has been entered into the database.')
+
+        birthdays[name] = birth
