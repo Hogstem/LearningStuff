@@ -1,0 +1,76 @@
+from decimal import Decimal
+
+#Defines our dictionaries
+F = {}  
+M = {}
+ 
+#This chunk builds the F dictionary 
+print ('Enter your annual income')     
+num=input()  
+F['Income'] = num
+print ('Enter your current savings')     
+num=input()  
+F['Savings'] = num   
+print ('Enter your current stock investments')   
+num=input()   
+F['In_Stocks'] = num     
+print ('Enter the rate of return(%)')  
+num=input()   
+F['Rate_of_return'] = num    
+print ('How much do you invest monthly?')  
+num=input()    
+F['Monthly_investment'] = num  
+ 
+print(' ') 
+print ('Please list all the monthly payments you can think of. When you are done with your list type EXIT') 
+print('')
+ 
+#makes a loop where you can enter your monthly expenses 
+while True: 
+  print ('Item:') 
+  Mon = input() 
+  if Mon == 'EXIT': 
+    break 
+  else:
+    print ('Cost:') 
+    cost = input() 
+    M[Mon]=int(cost) 
+ 
+#This chunk prints a list of monthly expenses 
+print (' ')  
+print ('Here are your monthly expenses:') 
+for key, value in M.items():   
+    print (key + ':' + str(value)) 
+print ('In total that is: ' + str(sum(M.values()))) 
+print ('') 
+ 
+#This is a chunk of code that lists investment stats
+print ('Here are your investments/income:') 
+for key, value in F.items():   
+    print (key + ':' + str(value))
+IIAY = int((F.get('Monthly_investment')))*12
+print ('Your total yearly investments are: '+ str(IIAY)) #Stands for investments in a year
+ 
+# Prints the income you get at the end of a certain time 
+print('') 
+print ('Enter the time you want projected')  
+tim = input()  
+print ('')
+incomeproj = int(F.get('Income', value)) * int(tim)  
+print ('Net income made in ' + str(tim) + ' years: ' + str(incomeproj)) 
+ 
+#Subtracts expenses
+MME = int(incomeproj) -(int(IIAY) * int(tim)) - (int(sum(M.values())) * int(tim))
+print ('Minus your monthly expenses and investments for those years: '+ str(MME))
+
+#Finds the money after x years given current rate of return, monthly investments, and current money in investments
+IAXY = (int(F.get('In_Stocks', value)) + (int(IIAY) * int(tim))) #Investments After X Years
+IAXYAG = ((Decimal(IAXY) * (Decimal(F.get('Rate_of_return', value))/100) + Decimal(IAXY))) #Investments After X Years And Growth
+print('This is how much you will have in stocks after those years of investing: ' + str(IAXY))
+print('This is how much you will have in stocks after those years of investing plus the return: ' + str((IAXYAG)))
+
+#Calculates an estamated net worth
+print (' ')
+Bleep = int(IAXYAG) + int(MME)
+print ('Assuming you only spend money on your montly expenses your net worth is: ' + str(Bleep))
+print ('That means your rate of net growth since ' + str(tim) + ' years ago is: ' + str(Bleep /(int(F.get('Savings', value))))+ '%')
