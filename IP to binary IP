@@ -1,0 +1,64 @@
+#This collects the IP and prints it
+print ('Enter the IP one byte at a time')
+A = [] #To store the IP
+count = 0 # begins the counter to show the byte entered
+for i in range(4):
+  count += 1
+  IP = int(input('Enter byte ' + str(count) + ': '))
+  A.append(IP)
+print ('Your IP is: ' + str(A[0]) + '.' + str(A[1]) + '.' + str(A[2]) + '.' + str(A[3]))
+
+c = []#to store the binary ip
+#this converts to binary
+def binaryip(b):
+    x = -1  
+    y = -1
+    for i in range(4):
+        x += 1
+        y += 1
+        if (b[x]) >= 128:
+            b[x] = b[x] - 128
+            c.append(1)
+        else:
+           c.append(0)
+        if (b[x]) >= 64:
+            b[x] = b[x] - 64
+            c.append(1)
+        else:
+            c.append(0)
+        if (b[x]) >= 32:
+            b[x] = b[x] - 32
+            c.append(1)
+        else:
+           c.append(0)
+        if (b[x]) >= 16:
+            b[x] = b[x] - 16
+            c.append(1)
+        else:
+            c.append(0)
+        if (b[x]) >= 8:
+            b[x] = b[x] - 8
+            c.append(1)
+        else:
+            c.append(0)
+        if (b[x]) >= 4:
+            b[x] = b[x] - 4
+            c.append(1)
+        else:
+            c.append(0)
+        if (b[x]) >= 2:
+            b[x] = b[x] - 2
+            c.append(1)
+        else:
+           c.append(0)
+        if (b[x]) >= 1:
+            b[x] = b[x] - 1
+            c.append(1)
+        else:
+            c.append(0)
+        c.append('.')
+           
+binaryip(A)
+
+print('The binary IP is: ', end="")
+print (*c[0:35], sep = '')
