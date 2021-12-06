@@ -1,0 +1,21 @@
+import requests as r
+from bs4 import BeautifulSoup as bs
+import pyperclip as p
+
+URL = "Enter a gaggia classic ebay search url here"
+page = r.get(URL)
+soup = bs(page.content, "html.parser")
+searc = soup.find(id="srp-river-main")
+gaggia = searc.find_all("div", class_="s-item__info clearfix")
+
+for gaggia in gaggia:
+    itemname = gaggia.find("h3", class_="s-item__title")
+    price = gaggia.find("span", class_="s-item__price")
+    x = 'to'
+    if price == None:
+        print(' ')
+    elif x in price.text.replace('$' ,''):
+        print ('')
+    elif (float(price.text.replace('$','').replace(',','')) <= 250) and (float(price.text.replace('$','').replace(',','')) >=100):
+        print (itemname.text, end = "\n")
+        print (price.text, end = "\n"*2) 
