@@ -1,0 +1,25 @@
+import random as r
+import string
+import time as t
+
+#must enter 4 digit num/letter
+C = str(input('Please enter a 4 digit password, it can consist of numbers and letters only: '))
+st = t.time()
+password = C
+X = 0
+H = 0
+def some(e):
+    w = r.randint(0,5)
+    if w == (1):
+        return(r.randint(0, 9))
+    else:
+        return(r.choice(string.ascii_letters))
+while (X)!= str(password):
+    X = str(some(1)) + str(some(1)) +str(some(1)) + str(some(1))
+    print(X)
+    H += 1
+en = t.time()
+elsa = (en - st)
+print ('It took ', str(int(elsa/60)), ' minutes and ', str(int(elsa)), ' seconds to crack this password.' )
+print('It took you ' + str(H) + ' iterations to get the password.')
+print('The password was: ' + str(X))
