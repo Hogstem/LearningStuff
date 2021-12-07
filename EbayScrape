@@ -12,7 +12,7 @@ URL = ['put url to pages you want scanned here', 'and here', 'and here'
     soup = bs(page.content, "html.parser")#parses the html
     searc = soup.find(id="srp-river-main")#This selects all info on the page
     gaggia = searc.find_all("div", class_="s-item__info clearfix") #this defines the information for each item on the page
-    g = 0    
+    g = 0 #this is litterally useless but I am using it to get rid of certain items in the search
     for gaggia in gaggia:
         itemname = gaggia.find("h3", class_= "s-item__title")
         price = gaggia.find("span", class_= "s-item__price")
