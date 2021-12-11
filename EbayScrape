@@ -5,23 +5,22 @@ import pyperclip as p
 import webbrowser as w
 c = 0#this is a counter for looping through the URL's in the list
 li = []#records links to gaggia so that no repeats come up
-URL = ['put url to pages you want scanned here', 'and here', 'and here' 
+URL = ['put url to pages you want scanned here', 'and here', 'and here'] 
 page = r.get(URL[c])
-#print("\n" + '>' + (URL[c])) #Because adding it to the print above would not work
 c+=1
-soup = bs(page.content, "html.parser")#parses the html
+soup = bs(page.content, "html.parser")
 searc = soup.find(id="srp-river-main")#This selects all info on the page
-gaggia = searc.find_all("div", class_="s-item__info clearfix") #this defines the information for each item on the page
+gaggia = searc.find_all("div", class_="s-item__info clearfix") #this defines the section of html for each item on the page
 g = 0 #this is litterally useless but I am using it to get rid of certain items in the search
 for gaggia in gaggia:
     itemname = gaggia.find("h3", class_= "s-item__title")
     price = gaggia.find("span", class_= "s-item__price")
     link = gaggia.find("a", class_= "s-item__link")
     x = 'gaggia' and 'classic'
-    y = 'to'
+    y = 'to'#honestly its just too much work to program price ranges in so they are excluded from the search
     if link["href"] not in li:          
         if x in itemname.text.lower(): 
-            if price == None:
+            if price == None: 
                 g+=1
             elif y in price.text.replace('$' ,''):
                 g+=1
