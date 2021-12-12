@@ -10,7 +10,7 @@ X = 0
 H = 0
 def some(e):
     w = r.randint(0,5)
-    if w == (1):
+    if w in [1, 5]:
         return(r.randint(0, 9))
     else:
         return(r.choice(string.ascii_letters))
@@ -20,6 +20,7 @@ while (X)!= str(password):
     H += 1
 en = t.time()
 elsa = (en - st)
-print ('It took ', str(int(elsa/60)), ' minutes and ', str(int(elsa)), ' seconds to crack this password.' )
-print('It took you ' + str(H) + ' iterations to get the password.')
+m, s = divmod(elsa, 60)
+print (f'It took {int(m)} minutes and {int(s)} seconds to crack this password.' )
+print(f'It took you {H:,} iterations to get the password.')
 print('The password was: ' + str(X))
